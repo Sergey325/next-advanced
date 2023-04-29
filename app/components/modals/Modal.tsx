@@ -14,7 +14,7 @@ type Props = {
     actionLabel: string
     disabled?: boolean
     secondaryAction?: () => void
-    secondaryLabel?: string
+    secondaryActionLabel?: string
 };
 
 const Modal = ({
@@ -27,7 +27,7 @@ const Modal = ({
                    actionLabel,
                    disabled,
                    secondaryAction,
-                   secondaryLabel
+                   secondaryActionLabel
                }: Props) => {
     const [showModal, setShowModal] = useState(isOpen)
 
@@ -87,8 +87,8 @@ const Modal = ({
                         translate
                         duration-300
                         h-full
-                        ${showModal ? "translate-y-0" :"translate-y-full"}
-                        ${showModal ? "opacity-100" :"opacity-0"}
+                        ${showModal ? "translate-y-0" : "translate-y-full"}
+                        ${showModal ? "opacity-100" : "opacity-0"}
                     `}>
                         <div className="
                             translate
@@ -112,7 +112,7 @@ const Modal = ({
                                 border-b-[1px]
                             ">
                                 <button
-                                    onClick={onClose}
+                                    onClick={handleClose}
                                     className="p-1 border-0 hover:opacity-70 transition absolute left-9"
                                 >
                                     <IoMdClose size={18}/>
@@ -130,8 +130,20 @@ const Modal = ({
                             {/*  FOOTER  */}
                             <div className="flex flex-col gap-2 p-6">
                                 <div className="flex flex-row items-center gap-4 w-full">
-                                    <Button label="btn" />
+                                    {secondaryActionLabel && secondaryAction && (
+                                        <Button
+                                            label={secondaryActionLabel || ''}
+                                            disabled={disabled}
+                                            onClick={handleSecondaryAction}
+                                        />
+                                    )}
+                                    <Button
+                                        label={actionLabel}
+                                        disabled={disabled}
+                                        onClick={handleSubmit}
+                                    />
                                 </div>
+                                {footer}
                             </div>
                         </div>
                     </div>
