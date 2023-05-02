@@ -18,10 +18,10 @@ html {
 
 /*Track*/
 ::-webkit-scrollbar-track {
-    @apply bg-rose-300;
+    @apply bg-transparent;
 }
 
 /*Handle*/
 ::-webkit-scrollbar-thumb {
-    @apply bg-rose-500 rounded-md;
+    @apply bg-rose-300 rounded-md;
 }
