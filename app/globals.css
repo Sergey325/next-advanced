@@ -24,3 +24,10 @@ html {
 ::-webkit-scrollbar-thumb {
     @apply ml-1 bg-neutral-400 rounded-md;
 }
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top{
+    z-index: 0 !important;
+}
