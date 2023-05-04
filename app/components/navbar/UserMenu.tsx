@@ -3,11 +3,15 @@
 import {AiOutlineMenu} from "react-icons/ai";
 import Avatar from "../Avatar";
 import {useCallback, useState} from "react";
+import {signOut} from "next-auth/react";
+
 import MenuItem from "./MenuItem";
+
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import useRentModal from "@/app/hooks/useRentModal";
 import {User} from "@prisma/client";
-import {signOut} from "next-auth/react";
+
 
 type Props = {
     currentUser?: User | null
@@ -16,17 +20,26 @@ type Props = {
 const UserMenu = ({currentUser}: Props) => {
     const registerModal = useRegisterModal()
     const loginModal = useLoginModal()
+    const rentModal = useRentModal()
     const [isOpen, setIsOpen] = useState(false)
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value)
     },[])
 
+    const onRent = useCallback(() => {
+        if(!currentUser){
+            return loginModal.onOpen()
+        }
+
+        return rentModal.onOpen()
+    }, [currentUser, loginModal, rentModal])
+
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
                 <div
-                    onClick={() => {}}
+                    onClick={onRent}
                     className="
                         hidden md:block
                         text-sm font-semibold
@@ -93,7 +106,7 @@ const UserMenu = ({currentUser}: Props) => {
                                     label="My properties"
                                 />
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={rentModal.onOpen}
                                     label="Aitbnb my home"
                                 />
                                 <hr/>
