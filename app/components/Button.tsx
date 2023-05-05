@@ -33,7 +33,7 @@ const Button = ({label, onClick, disabled, outline, small, icon: Icon}: Props) =
                 ${small ? "text-sm" : "text-md"}
                 ${small ? "font-light" : "font-semibold"}
                 ${small ? "border-[1px]" : "border-2"}
-                
+                select-none
             `}
         >
             {Icon && (
