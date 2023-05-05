@@ -4,13 +4,10 @@
 
 html,
 body,
-root{
+:root{
     height: 100%;
 }
 
-html {
-    @apply h-full;
-}
 ::-webkit-scrollbar{
     @apply ml-1 w-2.5 h-2.5;
 }
