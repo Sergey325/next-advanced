@@ -3,10 +3,11 @@ import Container from "@/app/components/Container";
 import EmptyState from "@/app/components/EmptyState";
 import getListings from "@/app/actions/getListings";
 import ListingCard from "@/app/components/listings/ListingCard";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 
 export default async function Home() {
     const listings = await getListings()
-    const isEmpty = true
+    const currentUser = await getCurrentUser()
 
     if(!listings){
         return (
@@ -37,6 +38,7 @@ export default async function Home() {
                             <ListingCard
                                 key={listing.id}
                                 data={listing}
+                                currentUser={currentUser}
                             />
                         )
                     })}

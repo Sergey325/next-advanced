@@ -15,7 +15,7 @@ export const metadata = {
     description: 'Airbnb clone',
 }
 
-export default async function RootLayout({ children,} : {children: React.ReactNode}) {
+export default async function RootLayout({children,}: { children: React.ReactNode }) {
     const currentUser = await getCurrentUser()
 
     return (
@@ -23,8 +23,8 @@ export default async function RootLayout({ children,} : {children: React.ReactNo
             <body className={font.className}>
                 <ClientOnly>
                     <ToasterProvider/>
-                    <RegisterModal />
-                    <LoginModal />
+                    <RegisterModal/>
+                    <LoginModal/>
                     <RentModal/>
                     <Navbar currentUser={currentUser}/>
                 </ClientOnly>

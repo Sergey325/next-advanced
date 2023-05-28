@@ -17,8 +17,6 @@ const EmptyState = ({
 }: Props) => {
     const router = useRouter()
 
-
-
     return (
         <div
             className="
