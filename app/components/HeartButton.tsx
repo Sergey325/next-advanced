@@ -6,9 +6,10 @@ import useFavorite from "@/app/hooks/useFavorite";
 type Props = {
     listingId: string,
     currentUser?: User | null,
+    size?: number
 };
 
-const HeartButton = ({listingId, currentUser}: Props) => {
+const HeartButton = ({listingId, currentUser, size=28}: Props) => {
     const {hasFavorited, toggleFavorite} = useFavorite({listingId, currentUser})
 
     return (
@@ -22,7 +23,7 @@ const HeartButton = ({listingId, currentUser}: Props) => {
             "
         >
             <AiOutlineHeart
-                size={28}
+                size={size}
                 className="
                     fill-white
                     absolute
@@ -31,7 +32,7 @@ const HeartButton = ({listingId, currentUser}: Props) => {
                 "
             />
             <AiFillHeart
-                size={24}
+                size={size-4}
                 className={
                     hasFavorited ? "fill-rose-500" : "fill-neutral-500/70"
                 }
