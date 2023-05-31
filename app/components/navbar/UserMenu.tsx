@@ -11,6 +11,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRentModal from "@/app/hooks/useRentModal";
 import {User} from "@prisma/client";
+import {useRouter} from "next/navigation";
 
 
 type Props = {
@@ -22,6 +23,7 @@ const UserMenu = ({currentUser}: Props) => {
     const loginModal = useLoginModal()
     const rentModal = useRentModal()
     const [isOpen, setIsOpen] = useState(false)
+    const router = useRouter()
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value)
@@ -90,7 +92,7 @@ const UserMenu = ({currentUser}: Props) => {
                         {currentUser ? (
                             <>
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={() => router.push("/trips")}
                                     label="My trips"
                                 />
                                 <MenuItem

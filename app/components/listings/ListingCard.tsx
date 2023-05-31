@@ -1,6 +1,6 @@
 'use client'
 
-import {Listing, Reservation, User} from "@prisma/client";
+import {Listing, User} from "@prisma/client";
 import {useRouter} from "next/navigation";
 import useCountries from "@/app/hooks/useCountries";
 import {useCallback, useMemo} from "react";
@@ -8,10 +8,11 @@ import { format } from "date-fns"
 import Image from "next/image"
 import HeartButton from "@/app/components/HeartButton";
 import Button from "@/app/components/Button";
+import {SafeReservation} from "@/app/types";
 
 type Props = {
     data: Listing,
-    reservation?: Reservation,
+    reservation?: SafeReservation,
     onAction?: (id: string) => void,
     disabled?: boolean
     actionLabel?: string,
