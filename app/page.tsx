@@ -13,7 +13,7 @@ const Home = async ({searchParams}: Props)=> {
     const listings = await getListings(searchParams)
     const currentUser = await getCurrentUser()
 
-    if(!listings){
+    if(!listings.length){
         return (
             <ClientOnly>
                 <EmptyState showReset/>
