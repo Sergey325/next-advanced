@@ -24,6 +24,7 @@ const Input = ({id, label, type = "text", disabled, formatPrice, required, regis
             )}
             <input
                 id={id}
+                key={id}
                 disabled={disabled}
                 {...register(id, {required})}
                 placeholder=" "
